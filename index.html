@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirigiendo...</title>
+    <script>
+        function abrirYcerrar() {
+            // Obtener el parámetro "form" de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const formId = urlParams.get('form') || '1'; // Por defecto, usa el formulario 1 si no hay parámetro
+
+            // Definir los enlaces de SharePoint según el formulario
+            const sharepointLinks = {
+                '1': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EhF2shn-HeJHkLXWcIVcnb8BZlpQ11miBumSLvv74BLxQA?e=I8cWDa', // ANYTITLE
+                '2': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EvX_UOxaXB9BmnhTVwa96e4B0Eq5WGUymEgAWRad0gcr4w?e=OXmh8a', // BLOCK ACT
+                '3': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkJRpmhiYIRAi6Yk_DYiqOMB6bG-IC5TfLLxf69ZM_iuVA?e=wU99MT', // CFG-LOADER
+                '4': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EuTfnFsipGZJhsfwn1bD4S0BQcjQ0sCufbzN3hQs67irIQ?e=IEIrns', // CIOS WII              
+                '5': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EmwDmNHbuyhFsmasHHAOtTYBmAQDm24dtNFdsNaMOlwLqw?e=mu5fYG', // DESMENU
+                '6': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EqkqhUifxORJoMGkoVicoYoBRfa7wynsmu6XjM1XzhdWmA?e=KAaw2Y', // DOL A ELF
+                '7': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eu4nvzNtchZKnzesXDDrPWQB0vNaQ_G4AncfubrZwVTNCw?e=YUh9iw', // DVD A ISO
+                '8': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EvwTxDL23TNEstifKImY-iIBpqCOlmloFya5_tntfRWauQ?e=jahpEl', // ELIMINAR MODMII                
+                '9': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EsadGjZx5mtPkA1TgBwTSUcBMvTOgKkJx8L5QgD4cQMm5w?e=18hX3q', // HACK WII [wiibrand]
+                '10': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/ErFbDkQUwH5LkgJUiTf3REsBaJAO0pf4byPF7SageTUAUA?e=awdRpR', // HACKMII
+                '11': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EjoKXonWKh5NgthmlOb7dxwBYk3dBTRWriyZ-oD9prPUyw?e=k30EtW', // ISO A WBFS
+                '12': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EusEOhJtQH9Itin2-UpbdRkBhzSge6LPS1ovyb_281XLKg?e=OugHii', // MGBA              
+                '13': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkXvwrUv0n5Gg4w1NgMIqdwBCMpPiIoTTNfWOOz6H5yh_A?e=N10vKq', // NINTENDONT
+                '14': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EjG9WXyhGVlHpWypbJHJkKwB6h8fxZQIM3sSNqn0am5p1w?e=NqraN8', // NOT64
+                '15': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eg9LpHeeqk5IgWjuyuohc4ABiUdwWLFaM68p9Vhcwd0_-g?e=0d9bIN', // ONLINE WII
+                '16': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Esq8IygCB9JIhgdTOnVWj20BW20jKSAtzdufB_LPPLUG9A?e=q6hCqw', // PRIILOADER               
+                '17': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Ets8NbzNkdlAm4aQMnppWrYBiC5IZNlDsGVGhAmuNxYB_Q?e=BpvuCG', // REGION FRII
+                '18': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Ei7SnGvONZJMgkR04cOOP78B1WeqnHq0-CAPW_THp8GWjA?e=idw5DK', // RETROARCH
+                '19': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EgFdjaVqSl5HnVms6kd6nm4BY4xPdBYKu4hFQX3NX0C-bw?e=S2p9vF', // SYSCHECK
+                '20': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EpOLP8TCiRNAn5uCkhLyKw0BJPGRIpGs2foFz4PWkyCHzg?e=IBqTms', // TRIMEAR DOL             
+                '21': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkA8s7RztPNHuvBvh68FbbgBgwED_1120ZdOmr34Z8AmYg?e=xDvrMp', // USBLOADER-GX WII 
+                '22': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EvQLHljy1z9Mv8ndmv8GX2IBNncPqTczgx75M4a49wyFWA?e=7QCjrQ', // WIIFLOW WII 
+                '23': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EpumZd2YvTVCnIVAQ97ZicUBqFIjuKKW7hkiFK12wGKqrQ?e=U8eAK6', // WIISTATION
+                '24': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EmLGtPm_92hAmYuyAcvtYEcB8rT-3FFBzJTBJBe3q5LLfg?e=G1QjUq', // YAWM               
+                '25': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Es-h6NXOXQpFmRJKkNPacpABhyEGXgxK_ZY-IpTUiwR94w?e=qUN12o', // CIOS WII MINI - AUTOMATIC = Manual
+                '26': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Es-h6NXOXQpFmRJKkNPacpABhyEGXgxK_ZY-IpTUiwR94w?e=qUN12o', // CIOS WII MINI - MANUAL
+                '27': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkhbVQUSt2hLoGcdIVJrBvAB-KG6VC8nYNaDSHlpattMZA?e=gYkUQg', // HACK WII MINI
+                '28': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eok6eEzwfB5Gvz3Xjk0vhn0BsXYfPNh3V1Q78upd5XagpQ?e=aujVBr', // CIOS vWII - AUTOMÁTIC = Manual              
+                '29': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eok6eEzwfB5Gvz3Xjk0vhn0BsXYfPNh3V1Q78upd5XagpQ?e=aujVBr', // CIOS vWII - MANUAL
+                '30': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkotHe2jRldOhGDiYx9t_JUB1XsfJObDMftv7wRcBCiOHA?e=plHaG4', // HACK WII U
+                '31': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eg2lcWOj5GhHj0EDSDwwwboBptJPQ1RMGR4DpPL1KgeO4g?e=3RoR2d', // HACK vWII
+                '32': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Ehgk6zwSPc9KvBqsI5cSP5QBgfUzCshqaDtqMcGIcEHSAg?e=qygiQV', // ELIMINAR HACK vWII y NAND
+                '33': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EvGrKJ92aWhIr-XRpZNjmWUBVLRC8zWA1gCVmGWtLtmizg?e=E8GIDl', // ELIMINAR MOCHA  
+                '34': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkqiY3x0Aq1GkwTnTl7Ua5EBRbT2itFBHmPgKLmgK9xQ2g?e=F3mkr8', // ELIMINAR TIRAMISU = Pack Wii U
+                '35': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EsyPzwHfpFRNuFIqMGP4RSEBLoF2DNtWxUG_yYpDYjCwSg?e=uzkqhV', // FTP WII U  
+                '36': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EsOz2ZMyJRxAvyV2aBZfgpUBOxq_qAQ5yIgEOZ5ECesH_A?e=TJA8w8', // HBC WII U y WUP 
+                '37': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkcxRnyFvwRNtcMg43MGaLYB3pWwvDCxYptQDpLsUnFLew?e=RcLfm1', // ONLINE WII U  
+                '38': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EkqiY3x0Aq1GkwTnTl7Ua5EBRbT2itFBHmPgKLmgK9xQ2g?e=F3mkr8', // PACK ARRANQUE WII U
+                '39': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/ElNtUhSVdk9IjhyabSvXCvIBucjeqzQNePQISHGL4LxzMA?e=YXeBe3', // TECOMOON
+                '40': ''  // 
+            };
+
+            // Seleccionar el enlace de SharePoint según el formulario
+            const sharepointUrl = sharepointLinks[formId] || sharepointLinks['1']; // Fallback al enlace del Formulario 1
+
+            // Abrir las pestañas y verificar si se abren
+            const discordWindow = window.open("https://discord.com/invite/xHg7XaYJvK", "_blank"); // Discord
+            const amazonWindow = window.open("https://amzn.to/3DSlb4e", "_blank");    // Amazon Prime
+            const sharepointWindow = window.open(sharepointUrl, "_blank");            // SharePoint dinámico
+
+            // Intentar cerrar la ventana después de un retraso
+            setTimeout(function() {
+                // Verificar si las pestañas se abrieron (si alguna es null, el bloqueador impidió la apertura)
+                if (!discordWindow || !amazonWindow || !sharepointWindow) {
+                    document.body.innerHTML = "<p>Error: No se abrieron las pestañas. Desactiva el bloqueador de pop-ups y actualiza la página.</p>";
+                } else {
+                    window.close();
+                    // Si window.close() falla, mostrar mensaje
+                    document.body.innerHTML = "<p>Redirección completa. Puedes cerrar esta pestaña manualmente.</p>";
+                }
+            }, 1000); // Aumentado a 1 segundo para mayor compatibilidad
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = abrirYcerrar;
+    </script>
+</head>
+<body>
+    <p>Redirigiendo... Si las pestañas no se abren, desactiva el bloqueador de pop-ups y actualiza la página.</p>
+</body>
+</html>
